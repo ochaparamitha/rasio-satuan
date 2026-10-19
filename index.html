@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Aplikasi Belajar Matematika: Memahami Rasio Satuan</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            blue: '#3B82F6',
+                            sky: '#06B6D4',
+                            mint: '#10B981',
+                            orange: '#F97316',
+                            yellow: '#F59E0B',
+                            bg: '#F0FDFA'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Custom scrollbar and smooth transitions */
+        body {
+            -webkit-tap-highlight-color: transparent;
+            user-select: none;
+        }
+        .touch-action-manipulation {
+            touch-action: manipulation;
+        }
+        .portal-card {
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .portal-card:active {
+            transform: scale(0.97);
+        }
+        @keyframes bounce-subtle {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-4px); }
+        }
+        .animate-subtle {
+            animation: bounce-subtle 2s infinite ease-in-out;
+        }
+    </style>
+</head>
+<body class="bg-teal-50/50 min-h-screen text-slate-800 font-sans pb-10">
+
+    <!-- TOP HEADER / NAVBAR -->
+    <header class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-teal-100 shadow-sm px-4 py-3 flex items-center justify-between">
+        <div class="flex items-center gap-2">
+            <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-brand-blue to-brand-sky flex items-center justify-center text-white font-bold text-lg shadow-md shadow-cyan-200">
+                ÷
+            </div>
+            <div>
+                <h1 class="text-base font-extrabold text-slate-800 leading-tight">Rasio Satuan</h1>
+                <p class="text-xs text-emerald-600 font-semibold">Matematika Kelas 6 SD</p>
+            </div>
+        </div>
+        <button id="btnHomeHeader" onclick="switchPortal('dashboard')" class="hidden bg-teal-50 text-teal-700 px-3 py-1.5 rounded-full text-xs font-bold border border-teal-200 flex items-center gap-1 active:bg-teal-100">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+            Menu
+        </button>
+    </header>
+
+    <main class="max-w-md mx-auto px-4 pt-4">
+
+        <!-- DASHBOARD PORTAL NAVIGATOR -->
+        <section id="portal-dashboard" class="space-y-4">
+            <!-- Welcome Box -->
+            <div class="bg-gradient-to-r from-cyan-500 to-teal-500 text-white rounded-3xl p-5 shadow-lg relative overflow-hidden">
+                <div class="absolute -right-4 -bottom-4 opacity-20">
+                    <svg class="w-36 h-36" fill="currentColor" viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-2 10h-4v4h-2v-4H7v-2h4V7h2v4h4v2z"/></svg>
+                </div>
+                <span class="inline-block px-3 py-1 bg-white/20 rounded-full text-xs font-bold backdrop-blur-sm mb-2">👋 Halo Sahabat Hebat!</span>
+                <h2 class="text-xl font-extrabold leading-snug">Mari Belajar Rasio Satuan dengan Mudah!</h2>
+                <p class="text-xs text-teal-100 mt-1">Pilih salah satu portal petualangan di bawah ini untuk memulai.</p>
+            </div>
+
+            <!-- Portal Buttons -->
+            <div class="grid grid-cols-1 gap-3">
+                <!-- Portal 1 -->
+                <div onclick="switchPortal('portal1')" class="portal-card bg-white p-4 rounded-2xl border border-teal-100 shadow-sm flex items-center gap-4 cursor-pointer">
+                    <div class="w-12 h-12 rounded-2xl bg-blue-100 text-blue-600 flex items-center justify-center font-bold text-xl shrink-0">
+                        💡
+                    </div>
+                    <div class="flex-1">
+                        <span class="text-[10px] font-bold text-blue-500 uppercase tracking-wider">Portal 1</span>
+                        <h3 class="text-sm font-bold text-slate-800">Konsep & Pengertian</h3>
+                        <p class="text-xs text-slate-500">Memahami arti dasar rasio satuan</p>
+                    </div>
+                    <div class="text-slate-300">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/></svg>
+                    </div>
+                </div>
+
+                <!-- Portal 2 -->
+                <div onclick="switchPortal('portal2')" class="portal-card bg-white p-4 rounded-2xl border border-teal-100 shadow-sm flex items-center gap-4 cursor-pointer">
+                    <div class="w-12 h-12 rounded-2xl bg-emerald-100 text-emerald-600 flex items-center justify-center font-bold text-xl shrink-0">
+                        ✏️
+                    </div>
+                    <div class="flex-1">
+                        <span class="text-[10px] font-bold text-emerald-500 uppercase tracking-wider">Portal 2</span>
+                        <h3 class="text-sm font-bold text-slate-800">Cara Menentukan</h3>
+                        <p class="text-xs text-slate-500">Langkah menghitung rasio satuan</p>
+                    </div>
+                    <div class="text-slate-300">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/></svg>
+                    </div>
+                </div>
+
+                <!-- Portal 3 -->
+                <div onclick="switchPortal('portal3')" class="portal-card bg-white p-4 rounded-2xl border border-teal-100 shadow-sm flex items-center gap-4 cursor-pointer">
+                    <div class="w-12 h-12 rounded-2xl bg-amber-100 text-amber-600 flex items-center justify-center font-bold text-xl shrink-0">
+                        🛒
+                    </div>
+                    <div class="flex-1">
+                        <span class="text-[10px] font-bold text-amber-500 uppercase tracking-wider">Portal 3</span>
+                        <h3 class="text-sm font-bold text-slate-800">Membandingkan Pilihan</h3>
+                        <p class="text-xs text-slate-500">Mencari harga yang lebih hemat</p>
+                    </div>
+                    <div class="text-slate-300">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/></svg>
+                    </div>
+                </div>
+
+                <!-- Portal 4 -->
+                <div onclick="switchPortal('portal4')" class="portal-card bg-white p-4 rounded-2xl border border-teal-100 shadow-sm flex items-center gap-4 cursor-pointer">
+                    <div class="w-12 h-12 rounded-2xl bg-purple-100 text-purple-600 flex items-center justify-center font-bold text-xl shrink-0">
+                        🤝
+                    </div>
+                    <div class="flex-1">
+                        <span class="text-[10px] font-bold text-purple-500 uppercase tracking-wider">Portal 4</span>
+                        <h3 class="text-sm font-bold text-slate-800">Latihan Terbimbing</h3>
+                        <p class="text-xs text-slate-500">Diskusi contoh soal bersama Tutor</p>
+                    </div>
+                    <div class="text-slate-300">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/></svg>
+                    </div>
+                </div>
+
+                <!-- Portal 5 -->
+                <div onclick="switchPortal('portal5')" class="portal-card bg-gradient-to-r from-orange-500 to-amber-500 text-white p-4 rounded-2xl shadow-md flex items-center gap-4 cursor-pointer relative overflow-hidden">
+                    <div class="w-12 h-12 rounded-2xl bg-white/20 text-white flex items-center justify-center font-bold text-xl shrink-0 backdrop-blur-sm">
+                        🏆
+                    </div>
+                    <div class="flex-1">
+                        <span class="text-[10px] font-bold text-amber-100 uppercase tracking-wider">Portal 5</span>
+                        <h3 class="text-sm font-extrabold">Tugas Formatif Interaktif</h3>
+                        <p class="text-xs text-amber-100">Uji pemahamanmu & kumpulkan nilai!</p>
+                    </div>
+                    <div class="text-white/80">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/></svg>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PORTAL 1: KONSEP & PENGERTIAN -->
+        <section id="portal1" class="hidden space-y-4">
+            <div class="flex items-center justify-between">
+                <span class="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-xs font-bold">Portal 1</span>
+                <button onclick="switchPortal('dashboard')" class="text-xs text-slate-500 hover:text-slate-800 font-semibold">← Kembali</button>
+            </div>
+            
+            <h2 class="text-lg font-extrabold text-slate-800">Konsep & Pengertian Rasio Satuan</h2>
+
+            <!-- Card A: Pengingat -->
+            <div class="bg-white p-4 rounded-2xl border border-blue-100 shadow-sm">
+                <div class="flex items-center gap-2 mb-2">
+                    <span class="w-6 h-6 rounded-full bg-blue-500 text-white text-xs font-bold flex items-center justify-center">A</span>
+                    <h3 class="font-bold text-slate-800 text-sm">Pengingat Rasio Senilai</h3>
+                </div>
+                <p class="text-xs text-slate-600 leading-relaxed">
+                    <strong>Rasio</strong> membandingkan dua besaran. Rasio senilai dapat diperoleh dengan mengalikan atau membagi kedua bilangan dengan faktor yang sama.
+                </p>
+            </div>
+
+            <!-- Card B: Definisi -->
+            <div class="bg-white p-4 rounded-2xl border border-blue-100 shadow-sm">
+                <div class="flex items-center gap-2 mb-2">
+                    <span class="w-6 h-6 rounded-full bg-emerald-500 text-white text-xs font-bold flex items-center justify-center">B</span>
+                    <h3 class="font-bold text-slate-800 text-sm">Definisi Rasio Satuan</h3>
+                </div>
+                <p class="text-xs text-slate-600 leading-relaxed">
+                    <strong>Rasio Satuan</strong> adalah rasio yang menunjukkan perbandingan terhadap <span class="text-emerald-600 font-bold bg-emerald-50 px-1 rounded">SATU SATUAN</span> dari salah satu besaran.
+                </p>
+            </div>
+
+            <!-- Card C: Contoh 1 -->
+            <div class="bg-white p-4 rounded-2xl border border-blue-100 shadow-sm space-y-3">
+                <div class="flex items-center gap-2">
+                    <span class="w-6 h-6 rounded-full bg-amber-500 text-white text-xs font-bold flex items-center justify-center">C</span>
+                    <h3 class="font-bold text-slate-800 text-sm">Contoh 1: Buku & Harga</h3>
+                </div>
+
+                <div class="bg-slate-50 p-3 rounded-xl border border-slate-100 space-y-2">
+                    <p class="text-xs text-slate-700">4 buku tulis = <strong>Rp12.000</strong> (Rasio 4 : 12.000)</p>
+                    <div class="p-2 bg-blue-50 rounded-lg text-xs font-mono text-blue-800 text-center">
+                        Dibagi 4 ➔ (4 ÷ 4) : (12.000 ÷ 4) = <strong>1 : 3.000</strong>
+                    </div>
+                    <p class="text-xs text-emerald-700 font-semibold text-center">
+                        ✨ Artinya: 1 buku tulis seharga Rp3.000
+                    </p>
+                </div>
+
+                <!-- SVG Illustration: Buku & Harga -->
+                <div class="bg-gradient-to-br from-blue-50 to-teal-50 p-4 rounded-xl flex items-center justify-around border border-blue-100">
+                    <div class="text-center">
+                        <svg class="w-16 h-16 mx-auto drop-shadow-sm" viewBox="0 0 64 64" fill="none">
+                            <rect x="12" y="10" width="40" height="48" rx="4" fill="#3B82F6"/>
+                            <path d="M16 10V58" stroke="#1D4ED8" stroke-width="3"/>
+                            <path d="M24 20H44M24 28H40M24 36H44" stroke="#93C5FD" stroke-width="3" stroke-linecap="round"/>
+                        </svg>
+                        <span class="text-[11px] font-bold text-slate-700 mt-1 block">1 Buku Tulis</span>
+                    </div>
+                    <div class="text-slate-300 font-bold text-xl">=</div>
+                    <div class="text-center">
+                        <div class="w-16 h-16 rounded-full bg-emerald-500 flex items-center justify-center text-white font-extrabold text-xs shadow-md mx-auto">
+                            Rp3.000
+                        </div>
+                        <span class="text-[11px] font-bold text-emerald-700 mt-1 block">Harga Satuan</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Highlight Box -->
+            <div class="bg-amber-50 border border-amber-200 p-4 rounded-2xl flex gap-3 items-start">
+                <div class="text-2xl shrink-0">💡</div>
+                <div class="text-xs text-amber-900 leading-relaxed">
+                    <strong>Penting Ditingat:</strong> Rasio satuan sangat membantu kita mengetahui banyaknya besaran untuk setiap <u>satu satuan</u> besaran lain (seperti harga per 1 barang, jarak dalam 1 jam, atau barang per 1 orang).
+                </div>
+            </div>
+
+            <button onclick="switchPortal('portal2')" class="w-full py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-xl text-xs font-bold shadow-md shadow-blue-200">
+                Lanjut ke Portal 2: Cara Menentukan →
+            </button>
+        </section>
+
+        <!-- PORTAL 2: CARA MENENTUKAN RASIO SATUAN -->
+        <section id="portal2" class="hidden space-y-4">
+            <div class="flex items-center justify-between">
+                <span class="px-3 py-1 bg-emerald-100 text-emerald-700 rounded-full text-xs font-bold">Portal 2</span>
+                <button onclick="switchPortal('dashboard')" class="text-xs text-slate-500 hover:text-slate-800 font-semibold">← Kembali</button>
+            </div>
+
+            <h2 class="text-lg font-extrabold text-slate-800">Cara Menentukan Rasio Satuan</h2>
+
+            <!-- Prinsip -->
+            <div class="bg-emerald-600 text-white p-4 rounded-2xl shadow-md">
+                <h3 class="text-xs font-bold uppercase tracking-wider text-emerald-200 mb-1">Prinsip Utama</h3>
+                <p class="text-xs leading-relaxed font-medium">
+                    Bagilah kedua besaran dengan bilangan yang sesuai sehingga salah satu besaran bernilai tepat <strong>1 (satu) satuan</strong>.
+                </p>
+            </div>
+
+            <!-- Contoh 2 -->
+            <div class="bg-white p-4 rounded-2xl border border-emerald-100 shadow-sm space-y-3">
+                <h3 class="font-bold text-slate-800 text-sm flex items-center gap-2">
+                    <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+                    Contoh 2: Pembagian Pensil
+                </h3>
+                <p class="text-xs text-slate-600">
+                    Ada <strong>15 pensil</strong> dibagikan secara adil kepada <strong>3 siswa</strong> (Rasio 15 : 3).
+                </p>
+
+                <div class="bg-emerald-50/50 p-3 rounded-xl border border-emerald-100 space-y-2">
+                    <p class="text-xs text-slate-700">Bagikan dengan angka 3:</p>
+                    <div class="p-2 bg-white rounded-lg text-xs font-mono text-emerald-800 text-center border border-emerald-200 font-bold">
+                        (15 ÷ 3) : (3 ÷ 3) = 5 : 1
+                    </div>
+                    <p class="text-xs text-emerald-800 font-semibold">
+                        Tafsiran: <strong>5 pensil untuk setiap 1 siswa</strong>.
+                    </p>
+                </div>
+
+                <div class="text-[11px] bg-slate-50 p-2.5 rounded-lg text-slate-600 border border-slate-100">
+                    📌 <i>Perbedaan:</i> <strong>15 : 3</strong> adalah rasio awal, sedangkan <strong>5 : 1</strong> adalah rasio satuannya.
+                </div>
+            </div>
+
+            <!-- Contoh 3 -->
+            <div class="bg-white p-4 rounded-2xl border border-emerald-100 shadow-sm space-y-3">
+                <h3 class="font-bold text-slate-800 text-sm flex items-center gap-2">
+                    <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+                    Contoh 3: Jarak Perjalanan Mobil
+                </h3>
+                <p class="text-xs text-slate-600">
+                    Sebuah mobil menempuh jarak <strong>180 km</strong> dalam waktu <strong>3 jam</strong> (Rasio 180 : 3).
+                </p>
+
+                <div class="bg-blue-50/50 p-3 rounded-xl border border-blue-100 space-y-2">
+                    <div class="p-2 bg-white rounded-lg text-xs font-mono text-blue-800 text-center border border-blue-200 font-bold">
+                        (180 ÷ 3) : (3 ÷ 3) = 60 : 1
+                    </div>
+                    <p class="text-xs text-blue-800 font-semibold text-center">
+                        Tafsiran: Kecepatan mobil = <strong>60 kilometer per jam</strong>.
+                    </p>
+                </div>
+
+                <!-- SVG Mobil -->
+                <div class="bg-gradient-to-r from-emerald-50 to-teal-50 p-4 rounded-xl border border-emerald-100 flex flex-col items-center">
+                    <svg class="w-full h-20" viewBox="0 0 240 80" fill="none">
+                        <!-- Jalanan -->
+                        <line x1="10" y1="65" x2="230" y2="65" stroke="#94A3B8" stroke-width="4" stroke-dasharray="8 6"/>
+                        <!-- Mobil -->
+                        <g class="animate-subtle">
+                            <rect x="60" y="30" width="100" height="25" rx="6" fill="#10B981"/>
+                            <path d="M80 30L95 15H135L150 30H80Z" fill="#059669"/>
+                            <circle cx="85" cy="58" r="10" fill="#334155"/>
+                            <circle cx="85" cy="58" r="4" fill="#94A3B8"/>
+                            <circle cx="135" cy="58" r="10" fill="#334155"/>
+                            <circle cx="135" cy="58" r="4" fill="#94A3B8"/>
+                        </g>
+                        <text x="120" y="12" fill="#047857" font-size="11" font-weight="bold" text-anchor="middle">60 KM / 1 JAM</text>
+                    </svg>
+                </div>
+            </div>
+
+            <button onclick="switchPortal('portal3')" class="w-full py-3 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl text-xs font-bold shadow-md shadow-emerald-200">
+                Lanjut ke Portal 3: Membandingkan Pilihan →
+            </button>
+        </section>
+
+        <!-- PORTAL 3: MEMBANDINGKAN PILIHAN -->
+        <section id="portal3" class="hidden space-y-4">
+            <div class="flex items-center justify-between">
+                <span class="px-3 py-1 bg-amber-100 text-amber-700 rounded-full text-xs font-bold">Portal 3</span>
+                <button onclick="switchPortal('dashboard')" class="text-xs text-slate-500 hover:text-slate-800 font-semibold">← Kembali</button>
+            </div>
+
+            <h2 class="text-lg font-extrabold text-slate-800">Membandingkan Pilihan (Harga Hemat)</h2>
+
+            <div class="bg-amber-500 text-white p-4 rounded-2xl shadow-md">
+                <h3 class="text-xs font-bold uppercase tracking-wider text-amber-100 mb-1">Tujuan</h3>
+                <p class="text-xs leading-relaxed font-medium">
+                    Menentukan pilihan mana yang lebih hemat atau menguntungkan dengan cara menghitung nilai per 1 satuannya terlebih dahulu!
+                </p>
+            </div>
+
+            <!-- Tabel Komparasi Toko A vs Toko B -->
+            <div class="bg-white rounded-2xl border border-amber-100 shadow-sm overflow-hidden p-4 space-y-3">
+                <h3 class="font-bold text-slate-800 text-sm">Contoh 4: Membandingkan Harga Toko</h3>
+
+                <div class="grid grid-cols-2 gap-2">
+                    <!-- Toko A -->
+                    <div class="bg-orange-50/60 p-3 rounded-xl border border-orange-200 text-center space-y-1">
+                        <span class="text-[10px] font-bold text-orange-600 bg-orange-100 px-2 py-0.5 rounded-full">Toko A</span>
+                        <p class="text-xs text-slate-700 mt-1">3 Buku = Rp9.000</p>
+                        <hr class="border-orange-200 my-1">
+                        <p class="text-[11px] text-slate-600">Rp9.000 ÷ 3</p>
+                        <p class="text-xs font-bold text-slate-800">Rp3.000 <span class="text-[10px] font-normal text-slate-500">/ buku</span></p>
+                    </div>
+
+                    <!-- Toko B -->
+                    <div class="bg-emerald-50/60 p-3 rounded-xl border border-emerald-200 text-center space-y-1 relative overflow-hidden">
+                        <span class="absolute top-0 right-0 bg-emerald-500 text-white text-[9px] font-bold px-2 py-0.5 rounded-bl-lg">Pilihan Hemat</span>
+                        <span class="text-[10px] font-bold text-emerald-600 bg-emerald-100 px-2 py-0.5 rounded-full">Toko B</span>
+                        <p class="text-xs text-slate-700 mt-1">5 Buku = Rp12.500</p>
+                        <hr class="border-emerald-200 my-1">
+                        <p class="text-[11px] text-slate-600">Rp12.500 ÷ 5</p>
+                        <p class="text-xs font-bold text-emerald-700">Rp2.500 <span class="text-[10px] font-normal text-slate-500">/ buku</span></p>
+                    </div>
+                </div>
+
+                <div class="p-3 bg-emerald-100/60 rounded-xl text-xs text-emerald-900 border border-emerald-200 font-medium">
+                    🎉 <strong>Kesimpulan:</strong> Toko B lebih murah karena harga per bukunya Rp2.500 (lebih kecil dibanding Toko A Rp3.000).
+                </div>
+            </div>
+
+            <!-- Catatan Penting -->
+            <div class="bg-red-50 border border-red-200 p-4 rounded-2xl flex gap-3 items-start">
+                <div class="text-xl shrink-0">⚠️</div>
+                <div class="text-xs text-red-900 leading-relaxed">
+                    <strong>Catatan Penting:</strong> Jangan hanya melihat total harga atau jumlah barangnya! Selalu hitung <u>rasio satuan (harga per 1 barang)</u> terlebih dahulu sebelum memutuskan mana yang lebih murah.
+                </div>
+            </div>
+
+            <button onclick="switchPortal('portal4')" class="w-full py-3 bg-amber-600 hover:bg-amber-700 text-white rounded-xl text-xs font-bold shadow-md shadow-amber-200">
+                Lanjut ke Portal 4: Latihan Terbimbing →
+            </button>
+        </section>
+
+        <!-- PORTAL 4: LATIHAN TERBIMBING -->
+        <section id="portal4" class="hidden space-y-4">
+            <div class="flex items-center justify-between">
+                <span class="px-3 py-1 bg-purple-100 text-purple-700 rounded-full text-xs font-bold">Portal 4</span>
+                <button onclick="switchPortal('dashboard')" class="text-xs text-slate-500 hover:text-slate-800 font-semibold">← Kembali</button>
+            </div>
+
+            <h2 class="text-lg font-extrabold text-slate-800">Latihan Terbimbing bersama Tutor</h2>
+            <p class="text-xs text-slate-600">Ketuk pada kartu soal di bawah untuk melihat langkah pembahasannya!</p>
+
+            <!-- Accordion Soal 1 -->
+            <div class="bg-white rounded-2xl border border-purple-100 shadow-sm overflow-hidden">
+                <button onclick="toggleAccordion('acc1')" class="w-full p-4 text-left flex justify-between items-center bg-slate-50/50 hover:bg-slate-50">
+                    <span class="font-bold text-xs text-slate-800">❓ Soal 1: Pembagian Kue Anak</span>
+                    <span id="acc1-icon" class="text-slate-400 font-bold text-sm">+</span>
+                </button>
+                <div id="acc1-content" class="hidden p-4 pt-2 border-t border-slate-100 space-y-2 text-xs">
+                    <p class="text-slate-700"><strong>Soal:</strong> Ada 20 kue untuk 4 anak. Berapa kue untuk 1 anak?</p>
+                    <div class="p-2 bg-purple-50 rounded-lg text-purple-900 font-mono text-[11px]">
+                        Langkah: 20 : 4 ➔ (20 ÷ 4) : (4 ÷ 4) = <strong>5 : 1</strong>
+                    </div>
+                    <p class="text-emerald-700 font-semibold">Jawaban: Setiap anak mendapatkan 5 kue.</p>
+                </div>
+            </div>
+
+            <!-- Accordion Soal 2 -->
+            <div class="bg-white rounded-2xl border border-purple-100 shadow-sm overflow-hidden">
+                <button onclick="toggleAccordion('acc2')" class="w-full p-4 text-left flex justify-between items-center bg-slate-50/50 hover:bg-slate-50">
+                    <span class="font-bold text-xs text-slate-800">❓ Soal 2: Kecepatan Printer Cetak</span>
+                    <span id="acc2-icon" class="text-slate-400 font-bold text-sm">+</span>
+                </button>
+                <div id="acc2-content" class="hidden p-4 pt-2 border-t border-slate-100 space-y-2 text-xs">
+                    <p class="text-slate-700"><strong>Soal:</strong> Printer mencetak 48 lembar kertas dalam 6 menit. Berapa lembar per menit?</p>
+                    <div class="p-2 bg-purple-50 rounded-lg text-purple-900 font-mono text-[11px]">
+                        Langkah: 48 ÷ 6 = <strong>8</strong>
+                    </div>
+                    <p class="text-emerald-700 font-semibold">Jawaban: Printer mencetak 8 lembar per menit.</p>
+                </div>
+            </div>
+
+            <!-- Accordion Soal 3 -->
+            <div class="bg-white rounded-2xl border border-purple-100 shadow-sm overflow-hidden">
+                <button onclick="toggleAccordion('acc3')" class="w-full p-4 text-left flex justify-between items-center bg-slate-50/50 hover:bg-slate-50">
+                    <span class="font-bold text-xs text-slate-800">❓ Soal 3: Membandingkan Pulpen</span>
+                    <span id="acc3-icon" class="text-slate-400 font-bold text-sm">+</span>
+                </button>
+                <div id="acc3-content" class="hidden p-4 pt-2 border-t border-slate-100 space-y-2 text-xs">
+                    <p class="text-slate-700"><strong>Soal:</strong> Toko A: 4 pulpen Rp8.000 vs Toko B: 6 pulpen Rp10.200. Mana lebih murah?</p>
+                    <div class="p-2 bg-purple-50 rounded-lg text-purple-900 font-mono text-[11px] space-y-1">
+                        <p>• Toko A = Rp8.000 ÷ 4 = Rp2.000 / pulpen</p>
+                        <p>• Toko B = Rp10.200 ÷ 6 = Rp1.700 / pulpen</p>
+                    </div>
+                    <p class="text-emerald-700 font-semibold">Jawaban: Toko B lebih murah (Rp1.700 &lt; Rp2.000).</p>
+                </div>
+            </div>
+
+            <button onclick="switchPortal('portal5')" class="w-full py-3 bg-gradient-to-r from-orange-500 to-amber-500 text-white rounded-xl text-xs font-bold shadow-md shadow-orange-200">
+                Siap Tes! Ke Portal 5: Tugas Formatif →
+            </button>
+        </section>
+
+        <!-- PORTAL 5: TUGAS FORMATIF INTERAKTIF -->
+        <section id="portal5" class="hidden space-y-4">
+            <div class="flex items-center justify-between">
+                <span class="px-3 py-1 bg-orange-100 text-orange-700 rounded-full text-xs font-bold">Portal 5</span>
+                <button onclick="switchPortal('dashboard')" class="text-xs text-slate-500 hover:text-slate-800 font-semibold">← Kembali</button>
+            </div>
+
+            <h2 class="text-lg font-extrabold text-slate-800">Tugas Formatif Interaktif</h2>
+
+            <!-- Form Identitas Siswa -->
+            <div id="quiz-identity-card" class="bg-white p-4 rounded-2xl border border-orange-200 shadow-sm space-y-3">
+                <h3 class="font-bold text-xs uppercase tracking-wider text-orange-600">Identitas Siswa</h3>
+                <div>
+                    <label class="block text-xs font-semibold text-slate-700 mb-1">Nama Lengkap Siswa <span class="text-red-500">*</span></label>
+                    <input type="text" id="studentName" placeholder="Ketik nama lengkapmu di sini..." class="w-full px-3 py-2 text-xs border border-slate-300 rounded-xl focus:ring-2 focus:ring-orange-400 focus:outline-none">
+                </div>
+                <button onclick="startQuiz()" class="w-full py-2.5 bg-orange-500 hover:bg-orange-600 text-white font-bold text-xs rounded-xl shadow-md">
+                    Mulai Mengerjakan Soal
+                </button>
+            </div>
+
+            <!-- Area Soal (Default Hidden) -->
+            <div id="quiz-area" class="hidden space-y-4">
+                
+                <!-- BAGIAN 1: PILIHAN GANDA -->
+                <div class="bg-white p-4 rounded-2xl border border-orange-100 shadow-sm space-y-4">
+                    <div class="border-b border-orange-100 pb-2">
+                        <span class="text-[10px] font-bold text-orange-600 uppercase bg-orange-50 px-2 py-0.5 rounded-full">Bagian 1</span>
+                        <h3 class="font-bold text-sm text-slate-800 mt-1">Pilihan Ganda (Soal 1–5)</h3>
+                    </div>
+
+                    <!-- Soal 1 -->
+                    <div class="space-y-2">
+                        <p class="text-xs text-slate-800 font-medium">1. Sebanyak 24 jeruk dibagikan sama banyak kepada 6 anak. Rasio satuan banyak jeruk terhadap banyak anak adalah ....</p>
+                        <div class="grid grid-cols-2 gap-2 text-xs">
+                            <label class="p-2 border rounded-xl flex items-center gap-2 cursor-pointer bg-slate-50 hover:bg-orange-50"><input type="radio" name="q1" value="A"> A. 24:6</label>
+                            <label class="p-2 border rounded-xl flex items-center gap-2 cursor-pointer bg-slate-50 hover:bg-orange-50"><input type="radio" name="q1" value="B"> B. 6:24</label>
+                            <label class="p-2 border rounded-xl flex items-center gap-2 cursor-pointer bg-slate-50 hover:bg-orange-50"><input type="radio" name="q1" value="C"> C. 4:1</label>
+                            <label class="p-2 border rounded-xl flex items-center gap-2 cursor-pointer bg-slate-50 hover:bg-orange-50"><input type="radio" name="q1" value="D"> D. 1:4</label>
+                        </div>
+                    </div>
+
+                    <!-- Soal 2 -->
+                    <div class="space-y-2 pt-2 border-t border-slate-100">
+                        <p class="text-xs text-slate-800 font-medium">2. Sebuah mesin menghasilkan 45 barang dalam waktu 5 menit. Banyak barang yang dihasilkan setiap menit adalah ....</p>
+                        <div class="grid grid-cols-2 gap-2 text-xs">
+                            <label class="p-2 border rounded-xl flex items-center gap-2 cursor-pointer bg-slate-50 hover:bg-orange-50"><input type="radio" name="q2" value="A"> A. 5 barang</label>
+                            <label class="p-2 border rounded-xl flex items-center gap-2 cursor-pointer bg-slate-50 hover:bg-orange-50"><input type="radio" name="q2" value="B"> B. 9 barang</label>
+                            <label class="p-2 border rounded-xl flex items-center gap-2 cursor-pointer bg-slate-50 hover:bg-orange-50"><input type="radio" name="q2" value="C"> C. 40 barang</label>
+                            <label class="p-2 border rounded-xl flex items-center gap-2 cursor-pointer bg-slate-50 hover:bg-orange-50"><input type="radio" name="q2" value="D"> D. 50 barang</label>
+                        </div>
+                    </div>
+
+                    <!-- Soal 3 -->
+                    <div class="space-y-2 pt-2 border-t border-slate-100">
+                        <p class="text-xs text-slate-800 font-medium">3. Toko A menjual 2 penggaris seharga Rp6.000. Harga satu penggaris adalah ....</p>
+                        <div class="grid grid-cols-2 gap-2 text-xs">
+                            <label class="p-2 border rounded-xl flex items-center gap-2 cursor-pointer bg-slate-50 hover:bg-orange-50"><input type="radio" name="q3" value="A"> A. Rp2.000</label>
+                            <label class="p-2 border rounded-xl flex items-center gap-2 cursor-pointer bg-slate-50 hover:bg-orange-50"><input type="radio" name="q3" value="B"> B. Rp3.000</label>
+                            <label class="p-2 border rounded-xl flex items-center gap-2 cursor-pointer bg-slate-50 hover:bg-orange-50"><input type="radio" name="q3" value="C"> C. Rp4.000</label>
+                            <label class="p-2 border rounded-xl flex items-center gap-2 cursor-pointer bg-slate-50 hover:bg-orange-50"><input type="radio" name="q3" value="D"> D. Rp6.000</label>
+                        </div>
+                    </div>
+
+                    <!-- Soal 4 -->
+                    <div class="space-y-2 pt-2 border-t border-slate-100">
+                        <p class="text-xs text-slate-800 font-medium">4. Toko A menjual 4 buku seharga Rp12.000. Toko B menjual 5 buku seharga Rp13.000. Berdasarkan harga satu buku, pilihan yang lebih murah adalah ....</p>
+                        <div class="grid grid-cols-1 gap-2 text-xs">
+                            <label class="p-2 border rounded-xl flex items-center gap-2 cursor-pointer bg-slate-50 hover:bg-orange-50"><input type="radio" name="q4" value="A"> A. Toko A, karena harga satu buku Rp3.000</label>
+                            <label class="p-2 border rounded-xl flex items-center gap-2 cursor-pointer bg-slate-50 hover:bg-orange-50"><input type="radio" name="q4" value="B"> B. Toko A, karena harga satu buku Rp2.600</label>
+                            <label class="p-2 border rounded-xl flex items-center gap-2 cursor-pointer bg-slate-50 hover:bg-orange-50"><input type="radio" name="q4" value="C"> C. Toko B, karena harga satu buku Rp3.000</label>
+                            <label class="p-2 border rounded-xl flex items-center gap-2 cursor-pointer bg-slate-50 hover:bg-orange-50"><input type="radio" name="q4" value="D"> D. Toko B, karena harga satu buku Rp2.600</label>
+                        </div>
+                    </div>
+
+                    <!-- Soal 5 -->
+                    <div class="space-y-2 pt-2 border-t border-slate-100">
+                        <p class="text-xs text-slate-800 font-medium">5. Sebuah kendaraan menempuh jarak 210 km dalam waktu 3 jam dengan kecepatan tetap. Jarak yang ditempuh setiap jam adalah ....</p>
+                        <div class="grid grid-cols-2 gap-2 text-xs">
+                            <label class="p-2 border rounded-xl flex items-center gap-2 cursor-pointer bg-slate-50 hover:bg-orange-50"><input type="radio" name="q5" value="A"> A. 60 km</label>
+                            <label class="p-2 border rounded-xl flex items-center gap-2 cursor-pointer bg-slate-50 hover:bg-orange-50"><input type="radio" name="q5" value="B"> B. 65 km</label>
+                            <label class="p-2 border rounded-xl flex items-center gap-2 cursor-pointer bg-slate-50 hover:bg-orange-50"><input type="radio" name="q5" value="C"> C. 70 km</label>
+                            <label class="p-2 border rounded-xl flex items-center gap-2 cursor-pointer bg-slate-50 hover:bg-orange-50"><input type="radio" name="q5" value="D"> D. 80 km</label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- BAGIAN 2: ISIAN SINGKAT / URAIAN -->
+                <div class="bg-white p-4 rounded-2xl border border-orange-100 shadow-sm space-y-4">
+                    <div class="border-b border-orange-100 pb-2">
+                        <span class="text-[10px] font-bold text-orange-600 uppercase bg-orange-50 px-2 py-0.5 rounded-full">Bagian 2</span>
+                        <h3 class="font-bold text-sm text-slate-800 mt-1">Isian & Uraian Singkat (Soal 6–10)</h3>
+                    </div>
+
+                    <!-- Soal 6 -->
+                    <div class="space-y-1.5">
+                        <p class="text-xs text-slate-800 font-medium">6. Sebanyak 36 kelereng dibagikan sama banyak kepada 9 anak. Ada berapa kelereng untuk setiap anak?</p>
+                        <input type="text" id="q6" placeholder="Tulis jawabanmu..." class="w-full px-3 py-2 text-xs border border-slate-200 rounded-xl focus:ring-1 focus:ring-orange-400 focus:outline-none">
+                    </div>
+
+                    <!-- Soal 7 -->
+                    <div class="space-y-1.5 pt-2 border-t border-slate-100">
+                        <p class="text-xs text-slate-800 font-medium">7. Sebuah printer mencetak 72 lembar kertas dalam 8 menit. Berapa lembar yang dicetak setiap menit jika kecepatannya tetap?</p>
+                        <input type="text" id="q7" placeholder="Tulis jawabanmu..." class="w-full px-3 py-2 text-xs border border-slate-200 rounded-xl focus:ring-1 focus:ring-orange-400 focus:outline-none">
+                    </div>
+
+                    <!-- Soal 8 -->
+                    <div class="space-y-1.5 pt-2 border-t border-slate-100">
+                        <p class="text-xs text-slate-800 font-medium">8. Sebuah toko menjual 6 pensil seharga Rp9.000. Berapa harga satu pensil?</p>
+                        <input type="text" id="q8" placeholder="Contoh: 1500 atau Rp1.500" class="w-full px-3 py-2 text-xs border border-slate-200 rounded-xl focus:ring-1 focus:ring-orange-400 focus:outline-none">
+                    </div>
+
+                    <!-- Soal 9 -->
+                    <div class="space-y-1.5 pt-2 border-t border-slate-100">
+                        <p class="text-xs text-slate-800 font-medium">9. Toko A menjual 3 buku seharga Rp12.000. Toko B menjual 4 buku seharga Rp14.000. Toko mana yang lebih murah per buku? Tuliskan toko dan perhitunganmu secara singkat.</p>
+                        <textarea id="q9" rows="2" placeholder="Tulis toko pilihanmu beserta caranya..." class="w-full px-3 py-2 text-xs border border-slate-200 rounded-xl focus:ring-1 focus:ring-orange-400 focus:outline-none"></textarea>
+                    </div>
+
+                    <!-- Soal 10 -->
+                    <div class="space-y-1.5 pt-2 border-t border-slate-100">
+                        <p class="text-xs text-slate-800 font-medium">10. Sebuah mobil menempuh jarak 240 km dalam 4 jam dengan kecepatan tetap. Tentukan jarak yang ditempuh setiap jam.</p>
+                        <input type="text" id="q10" placeholder="Tulis jawabanmu..." class="w-full px-3 py-2 text-xs border border-slate-200 rounded-xl focus:ring-1 focus:ring-orange-400 focus:outline-none">
+                    </div>
+                </div>
+
+                <button onclick="submitQuiz()" class="w-full py-3 bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold text-xs rounded-xl shadow-lg">
+                    Selesai & Lihat Hasil
+                </button>
+            </div>
+
+            <!-- RESULT DISPLAY CARD (Hidden by default) -->
+            <div id="quiz-result-card" class="hidden space-y-4">
+                <div class="bg-white p-5 rounded-3xl border border-emerald-200 shadow-md text-center space-y-3">
+                    <div class="w-16 h-16 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center font-extrabold text-2xl mx-auto">
+                        🏆
+                    </div>
+                    <div>
+                        <h3 class="text-base font-bold text-slate-800" id="resStudentName">Nama Siswa</h3>
+                        <p class="text-xs text-slate-500">Hasil Tugas Formatif Matematika Kelas 6</p>
+                    </div>
+
+                    <div class="bg-gradient-to-r from-teal-50 to-emerald-50 p-4 rounded-2xl border border-emerald-100">
+                        <span class="text-[10px] uppercase font-bold text-emerald-600 tracking-wider">Nilai Akhir Kamu</span>
+                        <div class="text-4xl font-extrabold text-emerald-600 my-1" id="resScore">0</div>
+                        <p class="text-[11px] text-slate-600">Selesai Ditugaskan Pada: <span id="resTimestamp" class="font-bold text-slate-800">19.57 WITA</span></p>
+                    </div>
+
+                    <!-- SCREENSHOT NOTICE BANNER -->
+                    <div class="bg-amber-50 border-2 border-dashed border-amber-300 p-3.5 rounded-2xl text-left space-y-1">
+                        <div class="flex items-center gap-1.5 text-amber-800 font-bold text-xs">
+                            <span class="text-base">📸</span> PERHATIAN PENTING:
+                        </div>
+                        <p class="text-[11px] text-amber-900 leading-relaxed">
+                            Silakan <strong>SCREENSHOT</strong> halaman hasil nilai ini (yang mencantumkan <strong>Nama, Nilai, dan Jam Selesai Pengerjaan</strong>) lalu kirimkan ke <strong>WhatsApp pribadi Guru!</strong>
+                        </p>
+                    </div>
+
+                    <button onclick="toggleEvaluationGuide()" class="w-full py-2.5 bg-blue-50 text-blue-700 border border-blue-200 rounded-xl text-xs font-bold active:bg-blue-100">
+                        📖 Panduan Evaluasi / Pembahasan
+                    </button>
+                </div>
+
+                <!-- PANDUAN EVALUASI / PEMBAHASAN TANPA KUNCI JAWABAN EKSPLISIT -->
+                <div id="evaluation-guide" class="hidden bg-white p-4 rounded-2xl border border-blue-100 shadow-sm space-y-3">
+                    <h4 class="font-bold text-xs text-blue-800 uppercase tracking-wide">💡 Rangkuman Panduan Cara Mengerjakan</h4>
+                    
+                    <div class="space-y-2 text-xs text-slate-600 leading-relaxed">
+                        <div class="p-2.5 bg-slate-50 rounded-xl border border-slate-100">
+                            <strong>1. Prinsip Menentukan Rasio Satuan:</strong>
+                            <p class="mt-0.5">Bagilah total jumlah besaran dengan jumlah satuannya. Misal: Total Harga ÷ Banyak Barang, atau Total Jarak ÷ Total Waktu.</p>
+                        </div>
+
+                        <div class="p-2.5 bg-slate-50 rounded-xl border border-slate-100">
+                            <strong>2. Tips Membandingkan Mana yang Lebih Hemat:</strong>
+                            <p class="mt-0.5">Hitung harga 1 barang di Toko A dan Toko B terlebih dahulu. Toko dengan harga per 1 barang yang bernilai lebih kecil adalah pilihan yang paling hemat!</p>
+                        </div>
+                    </div>
+
+                    <p class="text-[10px] text-slate-400 italic text-center">
+                        *Pelajari prinsip di atas untuk meningkatkan pemahamanmu saat mencoba latihan kembali.
+                    </p>
+                </div>
+            </div>
+
+        </section>
+
+    </main>
+
+    <script>
+        // NAVIGATION HANDLER
+        function switchPortal(portalId) {
+            const portals = ['portal-dashboard', 'portal1', 'portal2', 'portal3', 'portal4', 'portal5'];
+            portals.forEach(id => {
+                const el = document.getElementById(id);
+                if(el) el.classList.add('hidden');
+            });
+
+            const target = document.getElementById(portalId);
+            if(target) target.classList.remove('hidden');
+
+            const btnHome = document.getElementById('btnHomeHeader');
+            if(portalId === 'dashboard' || portalId === 'portal-dashboard') {
+                document.getElementById('portal-dashboard').classList.remove('hidden');
+                if(btnHome) btnHome.classList.add('hidden');
+            } else {
+                if(btnHome) btnHome.classList.remove('hidden');
+            }
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // ACCORDION TOGGLE FOR PORTAL 4
+        function toggleAccordion(id) {
+            const content = document.getElementById(id + '-content');
+            const icon = document.getElementById(id + '-icon');
+            if(content.classList.contains('hidden')) {
+                content.classList.remove('hidden');
+                icon.innerText = '−';
+            } else {
+                content.classList.add('hidden');
+                icon.innerText = '+';
+            }
+        }
+
+        // QUIZ SYSTEM LOGIC
+        function startQuiz() {
+            const nameInput = document.getElementById('studentName').value.trim();
+            if(!nameInput) {
+                alert('Mohon isi nama lengkapmu terlebih dahulu sebelum mulai!');
+                return;
+            }
+            document.getElementById('quiz-identity-card').classList.add('hidden');
+            document.getElementById('quiz-area').classList.remove('hidden');
+        }
+
+        function submitQuiz() {
+            let score = 0;
+
+            // --- PILIHAN GANDA (Soal 1 - 5) ---
+            const keyPG = {
+                q1: 'C',
+                q2: 'B',
+                q3: 'B',
+                q4: 'D',
+                q5: 'C'
+            };
+
+            for(let i = 1; i <= 5; i++) {
+                const selected = document.querySelector(`input[name="q${i}"]:checked`);
+                if(selected && selected.value === keyPG[`q${i}`]) {
+                    score += 10;
+                }
+            }
+
+            // --- ISIAN SINGKAT / URAIAN (Soal 6 - 10) ---
+            // Soal 6: Kunci 4 (Toleransi kata)
+            const val6 = (document.getElementById('q6').value || '').toLowerCase();
+            if (/\b4\b/.test(val6) || val6.includes('empat')) {
+                score += 10;
+            }
+
+            // Soal 7: Kunci 9 (Toleransi kata)
+            const val7 = (document.getElementById('q7').value || '').toLowerCase();
+            if (/\b9\b/.test(val7) || val7.includes('sembilan')) {
+                score += 10;
+            }
+
+            // Soal 8: Kunci 1500 / 1.500 / Rp1.500
+            const val8 = (document.getElementById('q8').value || '').toLowerCase();
+            if (val8.includes('1500') || val8.includes('1.500')) {
+                score += 10;
+            }
+
+            // Soal 9: Kunci Toko B & kalkulasi (3500/3.500 atau 4000/4.000)
+            const val9 = (document.getElementById('q9').value || '').toLowerCase();
+            const hasTokoB = val9.includes('toko b') || val9.includes('b');
+            const hasNumbers = val9.includes('3500') || val9.includes('3.500') || val9.includes('4000') || val9.includes('4.000');
+            if (hasTokoB && hasNumbers) {
+                score += 10;
+            }
+
+            // Soal 10: Kunci 60
+            const val10 = (document.getElementById('q10').value || '').toLowerCase();
+            if (/\b60\b/.test(val10)) {
+                score += 10;
+            }
+
+            // Tampilkan Hasil
+            const studentName = document.getElementById('studentName').value.trim();
+            document.getElementById('resStudentName').innerText = studentName;
+            document.getElementById('resScore').innerText = score;
+
+            // Generate Timestamp
+            const now = new Date();
+            const hours = String(now.getHours()).padStart(2, '0');
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            document.getElementById('resTimestamp').innerText = `${hours}.${minutes} WITA`;
+
+            // Sembunyikan Area Soal & Tampilkan Hasil
+            document.getElementById('quiz-area').classList.add('hidden');
+            document.getElementById('quiz-result-card').classList.remove('hidden');
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function toggleEvaluationGuide() {
+            const guide = document.getElementById('evaluation-guide');
+            if(guide) {
+                guide.classList.toggle('hidden');
+            }
+        }
+    </script>
+</body>
+</html>
